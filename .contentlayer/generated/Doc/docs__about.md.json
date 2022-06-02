@@ -1,0 +1,17 @@
+{
+  "title": "About",
+  "body": {
+    "raw": "\nHere is some information about Laser DB.\n",
+    "html": "<p>Here is some information about Laser DB.</p>"
+  },
+  "_id": "docs/about.md",
+  "_raw": {
+    "sourceFilePath": "docs/about.md",
+    "sourceFileName": "about.md",
+    "sourceFileDir": "docs",
+    "contentType": "markdown",
+    "flattenedPath": "docs/about"
+  },
+  "type": "Doc",
+  "url": "/docs/docs/about"
+}
