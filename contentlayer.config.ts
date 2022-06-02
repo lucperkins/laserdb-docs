@@ -1,4 +1,3 @@
-import { ComputedField, DocumentMeta } from "contentlayer/core";
 import {
   defineDocumentType,
   FieldDef,
@@ -61,7 +60,13 @@ export const Doc = defineDocumentType(() => ({
   },
 }));
 
+export const Page = defineDocumentType(() => ({
+  name: "Page",
+  filePathPattern: "index.md",
+  fields: {},
+}));
+
 export default makeSource({
   contentDirPath: "content",
-  documentTypes: [Post, Doc],
+  documentTypes: [Page, Post, Doc],
 });
