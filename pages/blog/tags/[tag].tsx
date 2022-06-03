@@ -15,7 +15,8 @@ type Props = {
 };
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const paths: string[] = allTags.map((t) => `/blog/tags/${t}`);
+  const tags: string[] = allTags(allPosts);
+  const paths: string[] = tags.map((t) => `/blog/tags/${t}`);
 
   return { paths, fallback: false };
 };
@@ -28,8 +29,9 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
 };
 
 const TagLayout = ({ tag }: Props) => {
+  const tags: string[] = allTags(allPosts);
   const posts: Post[] = pagesWithTag(allPosts, tag);
-  const otherTags: string[] = without(allTags, allTags.indexOf(tag));
+  const otherTags: string[] = without(tags, tags.indexOf(tag));
 
   return (
     <div className="py-8 px-6 flex-col space-y-4">

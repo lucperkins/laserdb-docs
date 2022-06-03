@@ -21,6 +21,8 @@ const PostCard = ({ title, date, url, tags }: Post) => {
 };
 
 const Blog = () => {
+  const tags: string[] = allTags(allPosts);
+
   return (
     <article className="py-8 px-6 flex-col space-y-4">
       <Title text="Posts" />
@@ -34,7 +36,7 @@ const Blog = () => {
       <div className="flex items-center space-x-3">
         <p>All tags</p>
 
-        <Tags tags={allTags} />
+        <Tags tags={tags} />
       </div>
     </article>
   );

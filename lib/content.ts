@@ -1,11 +1,12 @@
-import { allPosts } from "contentlayer/generated";
 import { format, parseISO } from "date-fns";
 import { unique } from "typescript-array-utils";
 
 // Constants
 const DATE_FORMAT = "LLLL d, yyyy";
 
-const allTags: string[] = unique(allPosts.flatMap((p) => p.tags));
+const allTags = <T extends { tags: string[] }>(items: T[]): string[] => {
+  return unique(items.flatMap((i) => i.tags));
+};
 
 // Sorting functions
 const byTitle = <T extends { title: string }>(a: T, b: T): number => {
