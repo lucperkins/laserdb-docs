@@ -1,4 +1,5 @@
 import Content from "components/Content";
+import Tags from "components/Tags";
 import Title from "components/Title";
 import { allPosts, Post } from "contentlayer/generated";
 import { GetStaticPaths, GetStaticProps } from "next";
@@ -31,13 +32,15 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
   return post ? { props: { post } } : { notFound: true };
 };
 
-const PostLayout = ({ post }: { post: Post }) => {
+const PostLayout = ({ post }: Props) => {
   return (
-    <>
+    <article className="py-8 px-6 flex-col space-y-4">
       <Title text={post.title} />
 
+      {post.tags.length > 0 && <Tags tags={post.tags} />}
+
       <Content html={post.body.html} />
-    </>
+    </article>
   );
 };
 

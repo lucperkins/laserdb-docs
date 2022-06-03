@@ -3,7 +3,12 @@ type Props = {
 };
 
 const Content = ({ html }: Props) => {
-  return <div className="prose" dangerouslySetInnerHTML={{ __html: html }} />;
+  return (
+    <div
+      className="prose dark:prose-dark"
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  );
 };
 
 export default Content;

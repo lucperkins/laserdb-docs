@@ -28,6 +28,12 @@ const fields: Record<string, FieldDef> = {
     description: "The publication date of the document",
     required: true,
   },
+  weight: {
+    type: "number",
+    description: "Weight assigned to the page",
+    required: false,
+    default: 1,
+  },
 };
 
 export const Post = defineDocumentType(() => ({
@@ -51,6 +57,7 @@ export const Doc = defineDocumentType(() => ({
   filePathPattern: `${prefixes.docs}/**/*.md`,
   fields: {
     title: fields.title,
+    weight: fields.weight,
   },
   computedFields: {
     url: {

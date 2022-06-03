@@ -16,13 +16,13 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <>
+      <article className="py-8 px-6 flex-col space-y-4">
         <Title text={title} />
 
         <h2 className="text-lg font-semibold">{description}</h2>
 
         <Content html={homePage.body.html} />
-      </>
+      </article>
     </>
   );
 };

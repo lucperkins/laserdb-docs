@@ -1,21 +1,10 @@
-import Title from "components/Title";
-import { allDocs } from "contentlayer/generated";
-import Link from "next/link";
+import DocsPage from "components/DocsPage";
+import { allDocs, Doc } from "contentlayer/generated";
 
-const Blog = () => {
-  return (
-    <>
-      <Title text="Documentation" />
+const Docs = () => {
+  const docsMain: Doc = allDocs.find((d) => d.url === "/docs")!;
 
-      <ul>
-        {allDocs.map((d) => (
-          <li key={d._id}>
-            <Link href={d.url}>{d.title}</Link>
-          </li>
-        ))}
-      </ul>
-    </>
-  );
+  return <DocsPage {...docsMain} />;
 };
 
-export default Blog;
+export default Docs;

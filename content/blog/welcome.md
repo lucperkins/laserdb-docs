@@ -1,6 +1,6 @@
 ---
 title: Welcome
-tags: [simple]
+tags: [simple, intro]
 date: 2022-05-15
 ---
 

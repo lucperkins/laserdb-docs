@@ -1,8 +1,11 @@
-import Content from "components/Content";
-import Title from "components/Title";
+import DocsPage from "components/DocsPage";
 import { allDocs, Doc } from "contentlayer/generated";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { ParsedUrlQuery } from "querystring";
+
+const nonMainDocs: Doc[] = allDocs.filter((d) => d.url != "/docs");
+
+const paths: string[] = nonMainDocs.map((d) => d.url);
 
 const getDoc = (slug: string): Doc | undefined => {
   const url = `/docs/${slug}`;
@@ -18,8 +21,6 @@ type Props = {
 };
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const paths = allDocs.map((d) => d.url);
-
   return { paths, fallback: false };
 };
 
@@ -32,13 +33,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
 };
 
 const DocLayout = ({ doc }: { doc: Doc }) => {
-  return (
-    <>
-      <Title text={doc.title} />
-
-      <Content html={doc.body.html} />
-    </>
-  );
+  return <DocsPage {...doc} />;
 };
 
 export default DocLayout;
