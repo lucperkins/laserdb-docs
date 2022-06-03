@@ -4,7 +4,7 @@ import {
   makeSource,
 } from "contentlayer/source-files";
 
-const prefixes: Record<string, string> = {
+export const prefixes: Record<string, string> = {
   docs: "docs",
   blog: "blog",
 };
@@ -41,7 +41,7 @@ export const Post = defineDocumentType(() => ({
   computedFields: {
     url: {
       type: "string",
-      resolve: (doc) => `/${prefixes.blog}/${doc._raw.flattenedPath}`,
+      resolve: (doc) => `/${doc._raw.flattenedPath}`,
     },
   },
 }));
@@ -55,7 +55,7 @@ export const Doc = defineDocumentType(() => ({
   computedFields: {
     url: {
       type: "string",
-      resolve: (doc) => `/${prefixes.docs}/${doc._raw.flattenedPath}`,
+      resolve: (doc) => `/${doc._raw.flattenedPath}`,
     },
   },
 }));

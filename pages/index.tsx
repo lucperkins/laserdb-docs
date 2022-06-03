@@ -1,4 +1,5 @@
 import Content from "components/Content";
+import Title from "components/Title";
 import { allPages, Page } from "contentlayer/generated";
 import type { NextPage } from "next";
 import Head from "next/head";
@@ -15,13 +16,13 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="p-12 flex-col space-y-4">
-        <h1 className="text-2xl font-bold">{title}</h1>
+      <>
+        <Title text={title} />
 
         <h2 className="text-lg font-semibold">{description}</h2>
 
         <Content html={homePage.body.html} />
-      </div>
+      </>
     </>
   );
 };
