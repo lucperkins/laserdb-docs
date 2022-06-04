@@ -16,7 +16,7 @@ const DocsNav = () => {
     <nav className="h-screen bg-gray-200 py-4 px-6">
       <ul>
         {sortedDocs.map((d) => (
-          <li key={d._id} className={clsx("hover:text-blue-600", isThisPage(d.url) && "text-blue-600")}>
+          <li key={d._id} className={clsx("hover:text-blue-600", isThisPage(d.url) && "text-violet-600")}>
             <Link href={d.url}>
               <a>{d.title}</a>
             </Link>

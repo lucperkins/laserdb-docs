@@ -9,7 +9,7 @@ const LastEdited = ({ lastEdited }: Props) => {
 
   return (
     <p className="text-sm">
-      Last edited: <span className="font-semibold">{formatted}</span>
+      Last edited on <span className="font-semibold">{formatted}</span>
     </p>
   );
 };

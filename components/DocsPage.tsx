@@ -1,10 +1,11 @@
 import { Doc } from "contentlayer/generated";
 import Content from "./Content";
 import DocsNav from "./DocsNav";
+import EditThisPage from "./EditThisPage";
 import LastEdited from "./LastEdited";
 import Title from "./Title";
 
-const DocsPage = ({ title, body, lastEdited }: Doc) => {
+const DocsPage = ({ title, body, _raw, lastEdited }: Doc) => {
   return (
     <div className="flex">
       <DocsNav />
@@ -15,6 +16,8 @@ const DocsPage = ({ title, body, lastEdited }: Doc) => {
         <Content html={body.html} />
 
         <LastEdited lastEdited={lastEdited} />
+
+        <EditThisPage url={_raw.sourceFilePath} />
       </article>
     </div>
   );
