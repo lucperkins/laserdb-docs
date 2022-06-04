@@ -6,7 +6,7 @@ const DocsNav = () => {
   const sortedDocs: Doc[] = allDocs.sort(byWeight);
 
   return (
-    <nav className="bg-gray-200 h-screen py-4 px-6">
+    <nav className="h-screen bg-gray-200 py-4 px-6">
       <ul>
         {sortedDocs.map((d) => (
           <li key={d._id} className="hover:text-blue-500">

@@ -16,7 +16,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <article className="py-8 px-6 flex-col space-y-4">
+      <article className="flex-col space-y-4 py-8 px-6">
         <Title text={title} />
 
         <h2 className="text-lg font-semibold">{description}</h2>

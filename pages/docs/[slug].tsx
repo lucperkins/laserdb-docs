@@ -24,9 +24,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   return { paths, fallback: false };
 };
 
-export const getStaticProps: GetStaticProps<Props, Params> = async ({
-  params,
-}) => {
+export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => {
   const { slug } = params as Params;
   const doc = getDoc(slug);
   return doc ? { props: { doc } } : { notFound: true };

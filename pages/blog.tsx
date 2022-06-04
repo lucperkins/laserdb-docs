@@ -8,7 +8,7 @@ const PostCard = ({ title, date, url, tags }: Post) => {
   return (
     <Link href={url}>
       <a>
-        <div className="flex-col space-y-3 border rounded py-3 px-5 hover:border-blue-500">
+        <div className="flex-col space-y-3 rounded border py-3 px-5 hover:border-blue-500">
           <p className="text-lg font-semibold">{title}</p>
           <div>
             <time className="text-sm font-light">{formatDate(date)}</time>
@@ -24,10 +24,10 @@ const Blog = () => {
   const tags: string[] = allTags(allPosts);
 
   return (
-    <article className="py-8 px-6 flex-col space-y-4">
+    <article className="flex-col space-y-4 py-8 px-6">
       <Title text="Posts" />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {allPosts.map((p) => (
           <PostCard key={p._id} {...p} />
         ))}

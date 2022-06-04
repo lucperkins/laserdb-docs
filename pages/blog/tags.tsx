@@ -7,7 +7,7 @@ const AllTags = () => {
   const tags: string[] = allTags(allPosts);
 
   return (
-    <div className="py-8 px-6 flex-col space-y-4">
+    <div className="flex-col space-y-4 py-8 px-6">
       <Title text="All tags" />
 
       <Tags tags={tags} />

@@ -24,9 +24,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   return { paths, fallback: false };
 };
 
-export const getStaticProps: GetStaticProps<Props, Params> = async ({
-  params,
-}) => {
+export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => {
   const { slug } = params as Params;
   const post = getPost(slug);
   return post ? { props: { post } } : { notFound: true };
@@ -34,7 +32,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
 
 const PostLayout = ({ post }: Props) => {
   return (
-    <article className="py-8 px-6 flex-col space-y-4">
+    <article className="flex-col space-y-4 py-8 px-6">
       <Title text={post.title} />
 
       {post.tags.length > 0 && <Tags tags={post.tags} />}

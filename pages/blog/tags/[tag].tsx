@@ -21,9 +21,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   return { paths, fallback: false };
 };
 
-export const getStaticProps: GetStaticProps<Props, Params> = async ({
-  params,
-}) => {
+export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => {
   const { tag } = params as Params;
   return tag ? { props: { tag } } : { notFound: true };
 };
@@ -34,7 +32,7 @@ const TagLayout = ({ tag }: Props) => {
   const otherTags: string[] = without(tags, tags.indexOf(tag));
 
   return (
-    <div className="py-8 px-6 flex-col space-y-4">
+    <div className="flex-col space-y-4 py-8 px-6">
       <h1 className="text-2xl">
         Pages for the tag <span className="font-bold">{tag}</span>
       </h1>

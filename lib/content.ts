@@ -23,10 +23,7 @@ const formatDate = (date: string): string => {
 };
 
 // Querying functions
-const pagesWithTag = <T extends { tags: string[] }>(
-  items: T[],
-  tag: string
-): T[] => {
+const pagesWithTag = <T extends { tags: string[] }>(items: T[], tag: string): T[] => {
   return items.filter((i) => i.tags.includes(tag));
 };
 

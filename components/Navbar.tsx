@@ -37,7 +37,7 @@ const NavbarLinks = ({ links }: { links: NavbarLinkProps[] }) => {
 
 const Navbar = () => {
   return (
-    <nav className="bg-gray-100 flex justify-between py-4 px-6">
+    <nav className="flex justify-between bg-gray-100 py-4 px-6">
       <div>
         <Link href="/">
           <a className="font-bold">{title}</a>

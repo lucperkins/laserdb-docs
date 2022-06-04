@@ -1,8 +1,4 @@
-import {
-  defineDocumentType,
-  FieldDef,
-  makeSource,
-} from "contentlayer/source-files";
+import { defineDocumentType, FieldDef, makeSource } from "contentlayer/source-files";
 
 export const prefixes: Record<string, string> = {
   docs: "docs",
