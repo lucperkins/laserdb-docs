@@ -34,13 +34,15 @@ const TagLayout = ({ tag }: Props) => {
   return (
     <div className="flex-col space-y-4 py-8 px-6">
       <h1 className="text-2xl">
-        Pages for the tag <span className="font-bold">{tag}</span>
+        Posts with the tag <span className="font-bold">{tag}</span>
       </h1>
 
-      <ul className="flex space-x-4">
+      <ul className="flex space-x-2">
         {posts.map((p) => (
-          <li key={p._id} className="font-light hover:text-blue-500">
-            <Link href={p.url}>{p.title}</Link>
+          <li key={p._id}>
+            <Link href={p.url}>
+              <a className="rounded border border-gray-300 py-1.5 px-3 hover:bg-gray-100">{p.title}</a>
+            </Link>
           </li>
         ))}
       </ul>
