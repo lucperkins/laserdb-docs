@@ -1,10 +1,24 @@
-import { defineDocumentType, FieldDef, makeSource } from "contentlayer/source-files";
+import { DocumentGen } from "contentlayer/core";
+import { DocumentTypeNames } from "contentlayer/generated";
+import { ComputedFields, defineDocumentType, FieldDef, makeSource } from "contentlayer/source-files";
+import * as fs from "node:fs/promises";
+import path from "node:path";
+
+// Constants
+const contentDirPath = "content";
 
 export const prefixes: Record<string, string> = {
   docs: "docs",
   blog: "blog",
 };
 
+// Helper functions
+const getLastEditedDate = async (doc: DocumentGen): Promise<Date> => {
+  const stats = await fs.stat(path.join(contentDirPath, doc._raw.sourceFilePath));
+  return stats.mtime;
+};
+
+// Reusable static field definitions
 const fields: Record<string, FieldDef> = {
   title: {
     type: "string",
@@ -32,6 +46,19 @@ const fields: Record<string, FieldDef> = {
   },
 };
 
+// Reusable computed field definitions
+const computedFields: ComputedFields<DocumentTypeNames> = {
+  lastEdited: {
+    type: "date",
+    resolve: getLastEditedDate,
+  },
+  url: {
+    type: "string",
+    resolve: (doc) => `/${doc._raw.flattenedPath}`,
+  },
+};
+
+// Document types
 export const Post = defineDocumentType(() => ({
   name: "Post",
   filePathPattern: `${prefixes.blog}/**/*.md`,
@@ -41,10 +68,7 @@ export const Post = defineDocumentType(() => ({
     date: fields.date,
   },
   computedFields: {
-    url: {
-      type: "string",
-      resolve: (doc) => `/${doc._raw.flattenedPath}`,
-    },
+    url: computedFields.url,
   },
 }));
 
@@ -56,20 +80,20 @@ export const Doc = defineDocumentType(() => ({
     weight: fields.weight,
   },
   computedFields: {
-    url: {
-      type: "string",
-      resolve: (doc) => `/${doc._raw.flattenedPath}`,
-    },
+    url: computedFields.url,
+    lastEdited: computedFields.lastEdited,
   },
 }));
 
-export const Page = defineDocumentType(() => ({
-  name: "Page",
+export const Home = defineDocumentType(() => ({
+  name: "Home",
   filePathPattern: "index.md",
+  isSingleton: true,
   fields: {},
 }));
 
+// Source definition
 export default makeSource({
-  contentDirPath: "content",
-  documentTypes: [Page, Post, Doc],
+  contentDirPath,
+  documentTypes: [Home, Post, Doc],
 });

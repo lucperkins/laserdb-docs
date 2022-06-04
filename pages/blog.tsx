@@ -1,17 +1,18 @@
 import Tags from "components/Tags";
 import Title from "components/Title";
 import { allPosts, Post } from "contentlayer/generated";
-import { allTags, formatDate } from "lib/content";
+import { allTags, formatAsDay } from "lib/content";
 import Link from "next/link";
 
 const PostCard = ({ title, date, url, tags }: Post) => {
+  const formattedDate = formatAsDay(date);
   return (
     <Link href={url}>
       <a>
         <div className="flex-col space-y-3 rounded border py-3 px-5 hover:border-blue-500">
           <p className="text-lg font-semibold">{title}</p>
           <div>
-            <time className="text-sm font-light">{formatDate(date)}</time>
+            <time className="text-sm font-light">{formattedDate}</time>
           </div>
           {tags.length > 0 && <Tags tags={tags} />}
         </div>
